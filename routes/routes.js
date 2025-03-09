@@ -6,7 +6,7 @@ const verificarToken = require('../middlewares/middlewares');
 const router = express.Router();
 
 router.post('/login', softJobsLogin);
-router.post('/register', softJobsRegister); 
+router.post('/usuarios', softJobsRegister); 
 router.get('/profile', verificarToken, softJobsProfile);
 
 module.exports = router;
