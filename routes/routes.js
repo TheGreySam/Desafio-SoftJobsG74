@@ -1,11 +1,12 @@
 const pool = require('../config/db');
-
+const express = require('express');
 const {softJobsLogin, softJobsRegister, softJobsProfile} = require('../controllers/controller');
-const verifyToken = require('../middlewares/middlewares');
+const verificarToken = require('../middlewares/middlewares');
 
-module.exports = app => {
-    app.post('/login', softJobsLogin);
-    app.post('/register', softJobsRegister);
-    app.get('/profile', verifyToken, softJobsProfile);
-}
-//ruta login que recibe credenciales de usuario y devuelve un token generado con con JWT
+const router = express.Router();
+
+router.post('/login', softJobsLogin);
+router.post('/register', softJobsRegister); 
+router.get('/profile', verificarToken, softJobsProfile);
+
+module.exports = router;
